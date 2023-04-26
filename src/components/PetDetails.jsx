@@ -1,7 +1,7 @@
 import React from "react";
 
-export default function PetDetails() {
+export default function PetDetails({pet}) {
     return (
-      <div>Pet Details</div>
+      <div>{pet.name}</div>
     )
   }
