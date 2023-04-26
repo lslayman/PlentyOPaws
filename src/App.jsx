@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Home from './components/Home';
 import About from './components/About';
+import PetCard from './components/PetCard';
 
 function App() {
   const router = createBrowserRouter([
@@ -19,6 +20,10 @@ function App() {
       path: "/about",
       element: <About />
     },
+    {
+      path: "/petCard",
+      element: <PetCard />
+    }
   ])
 
   return (
