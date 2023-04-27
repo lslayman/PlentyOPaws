@@ -1,22 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PetDetails from "./PetDetails"
-// import * as dotenv from 'dotenv'
+import { AuthContext } from "../App";
 
+//image, name, location, age
 
 export default function PetCard() {
-  //console.log(import.meta.env.VITE_API_KEY)
-   useEffect(() => {
-     fetch("https://api.rescuegroups.org/v5/public/animals/", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/vnd.api+json",
-        "Authorization": "{{xblsgOJW}}"
-      }
-     })
-     .then((res) => res.json())
-     .then((data) => console.log(data))
-   }, [])
-    return (
-      <div>Pet Card</div>
-    )
-  }
+  const [results, setResults] = useState(null);
+  const accessToken = useContext(AuthContext)
+  
+  useEffect(() => {
+    if (accessToken === null) return;
+    const fetchPets = async () => {
+        const petResults = await fetch(
+            "https://api.petfinder.com/v2/animals",
+            {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            }
+        );
+        const json = await petResults.json();
+        setResults(json.animals);
+    };
+    fetchPets();
+  }, [accessToken]);
+  if (results === null) return null;
+
+  return (
+  <div>PetCard</div>
+  )
+}
