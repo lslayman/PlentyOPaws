@@ -25,8 +25,16 @@ export default function PetCard() {
     fetchPets();
   }, [accessToken]);
   if (results === null) return null;
-
+  const pets = results.map((pet) =>(
+    <PetDetails
+      pet = {pet}
+    />
+  ))
   return (
-  <div>PetCard</div>
+  <div>
+    <ul>
+      {pets}
+    </ul>
+  </div>
   )
 }

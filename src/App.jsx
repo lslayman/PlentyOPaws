@@ -1,6 +1,4 @@
 import { createContext, useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import {
   createBrowserRouter,
@@ -9,7 +7,6 @@ import {
 import Home from './components/Home';
 import About from './components/About';
 import PetCard from './components/PetCard';
-//import { create } from 'domain';
 
 export const AuthContext = createContext();
 const API_KEY = import.meta.env.VITE_API_KEY;
