@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import {
   createBrowserRouter,
@@ -9,6 +8,8 @@ import {
 import Home from './components/Home';
 import About from './components/About';
 import PetCard from './components/PetCard';
+import Favorites from './components/Favorites';
+
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +24,10 @@ function App() {
     {
       path: "/petCard",
       element: <PetCard />
+    },
+    {
+      path: "/favorites",
+      element: <Favorites />
     }
   ])
 

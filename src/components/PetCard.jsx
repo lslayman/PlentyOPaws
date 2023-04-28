@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import PetDetails from "./PetDetails"
-
-//image, name, location, age
+import NavBar from "./NavBar"
+import Card from 'react-bootstrap/Card'
 
 export default function PetCard() {
   const [pets, setPets] = useState([]);
+
   useEffect(() => {
     fetch("http://localhost:3000/pets")
     .then((res) => res.json())
@@ -12,9 +13,19 @@ export default function PetCard() {
   }, []);
 
   const displayPet = pets.map((pet) => (
-    <PetDetails pet={pet}/>
+    <div className="card">
+      <PetDetails pet={pet}/>
+    </div>
   ))
-    return (
-      <div>{displayPet}</div>
+
+  return (
+    <>
+    <NavBar />
+    <div>
+      <Card style={{width: '40rem'}}>
+        {displayPet}
+      </Card>
+    </div>
+    </>
     )
-  }
+}
